@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("")
 public class TestController {
 
     private List<String> greetings = Arrays.asList("Hallo", "Moin", "Servus", "Na!");

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./colored-dots.css"
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
             }
         })
             .then(dots => dots.text())
-            .then(text =>setColor("#" + text))
+            .then(text => setColor("#" + text))
             .catch(err => setErrorMessage('No color received'));
     }, []);
 
@@ -43,6 +44,7 @@ function App() {
             </div>
             <div>
                 <span className={"dot"} style={{color: color}}> • </span>
+                <div>{color}</div>
             </div>
         </div>
     );
