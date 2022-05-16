@@ -18,7 +18,7 @@ function App() {
         })
             .then(response => response.text())
             .then(text => setGreeting(text))
-            .catch(err => setGreetingError('Da ist etwas schief gelaufen'));
+            .catch(err => setGreetingError('Something went wrong'));
     }, []);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function App() {
         })
             .then(response => response.json())
             .then((listOfColors: Array <string>) => setColorList(listOfColors))
-            .catch(err => setErrorMessage('No color received'));
+            .catch(err => setErrorMessage('No color set received'));
     }, []);
 
 
@@ -41,7 +41,7 @@ function App() {
                 {errorMessage && <div>{errorMessage}</div> }
             </div>
             <div>
-                {colorList.map(item => <span className={"dot"} style={{color: item}} key={item}> • </span>)}
+                {colorList.map(color => <span className={"dot"} style={{color: color}} key={color}> • </span>)}
             </div>
         </div>
     );
