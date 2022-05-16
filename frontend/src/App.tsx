@@ -27,7 +27,7 @@ function App() {
                 'Accept': 'text/plain'
             }
         })
-            .then(dots => dots.text())
+            .then(response => response.text())
             .then(text => setColor("#" + text))
             .catch(err => setErrorMessage('No color received'));
     }, []);

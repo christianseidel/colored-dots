@@ -4,17 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/api")
+@CrossOrigin
 public class TestController {
 
     private List<String> greetings = Arrays.asList("Hallo", "Moin", "Servus", "Na!");
 
-    @GetMapping(path="/api/greeting", produces="text/plain")
+    @GetMapping(path="/greeting", produces="text/plain")
     public String hello() {
         Random rand = new Random();
         return greetings.get(rand.nextInt(greetings.size()));
