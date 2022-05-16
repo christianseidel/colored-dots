@@ -5,7 +5,8 @@ function App() {
 
     const [greeting, setGreeting] = useState('')
     const [greetingError, setGreetingError] = useState('')
-    const [color, setColor] = useState('FFFFFF')
+
+    const [colorList, setColorList] = useState([] as string[])
     const [errorMessage, setErrorMessage] = useState('')
 
     useEffect(() => {
@@ -22,13 +23,10 @@ function App() {
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BASE_URL}/dots`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'text/plain'
-            }
+            method: 'GET'
         })
-            .then(response => response.text())
-            .then(text => setColor("#" + text))
+            .then(response => response.json())
+            .then((listOfColors: Array <string>) => setColorList(listOfColors))
             .catch(err => setErrorMessage('No color received'));
     }, []);
 
@@ -43,8 +41,7 @@ function App() {
                 {errorMessage && <div>{errorMessage}</div> }
             </div>
             <div>
-                <span className={"dot"} style={{color: color}}> • </span>
-                <div>{color}</div>
+                {colorList.map(item => <span className={"dot"} style={{color: item}} key={item}> • </span>)}
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 package project;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,11 +14,20 @@ class DotsServiceTest {
         DotsService service = new DotsService();
 
         // when
-        String myColour = service.getColor();
+        String[] setOfColours = service.getListOfColors();
+
+        String firstColor = setOfColours[0];
+        char firstCharacter = firstColor.charAt(0);
+
+        int lenghtOfList = setOfColours.length;
+
+        String lastColor = setOfColours[(lenghtOfList-1)];
 
         // then
-        assertEquals(6, myColour.length());
-        System.out.println(myColour);
+        assertEquals(7, firstColor.length());
+        assertEquals('#', firstCharacter);
+        assertTrue(lenghtOfList > 0 || lenghtOfList < 1000);
+        assertEquals(7, lastColor.length());
     }
 
 }

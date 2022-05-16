@@ -7,19 +7,28 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class DotsService {
 
+    public String[] getListOfColors() {
+        int numberOfDots = randomNumber(1000);
+        String[] listOfColors = new String[numberOfDots];
+        for (int i = 0; i < numberOfDots; i++) {
+            listOfColors[i] = getColor();
+        }
+        return listOfColors;
+    }
+
     // Using the Netscape Color Scheme:
-    public String getColor() {
+    private String getColor() {
         int x = randomNumber(12);
         String color = "";
         switch(x) {
             case 1:
-                color = "FF0000";
+                color = "#FF0000";
                 break;
             case 2:
-                color = "00FF00";
+                color = "#00FF00";
                 break;
             case 3:
-                color = "0000FF";
+                color = "#0000FF";
                 break;
             case 4:
             case 5:
@@ -36,7 +45,7 @@ public class DotsService {
     }
 
     private String getRandomColor() {
-        String color = "";
+        String color = "#";
         for (int i = 0; i <= 2; i++) {
             color = color + getColorByte();
         }
